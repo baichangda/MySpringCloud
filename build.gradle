@@ -1,0 +1,29 @@
+allprojects {
+    group 'com.bcd'
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+    sourceCompatibility = 1.8
+    repositories {
+        mavenLocal()
+        maven { url "${mavenRepoUrl}" }
+    }
+}
+
+buildscript {
+    ext {
+        springBootVersion = '1.+'
+        mavenRepoUrl='http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+    repositories {
+        mavenLocal()
+        maven { url "${mavenRepoUrl}" }
+    }
+    dependencies {
+        //使用springboot框架
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+
+}
